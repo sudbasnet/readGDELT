@@ -62,7 +62,7 @@ public class ReadGDELT {
         //                          String LineAll = sCurrentLine.replaceAll("\"\t",",");                                                        
         //                          String LineAll2 = LineAll.replaceAll("\t\"",",");                                                   
         //                          String[] attr = LineAll2.substring(2).split("\t");
-                                    String[] attr = sCurrentLine.split("\t");
+                                    String[] attr = sCurrentLine.replaceAll("\t\"",",").replaceAll("\"\t",",").replaceAll("\"","").split("\t");
 //                                    System.out.println(attr[26]);
                                     if((attr[51].equals("IN") || attr[51].equals("BG") || attr[51].equals("PK")) && 
 //                                     attr 51 is the country code
@@ -214,7 +214,7 @@ public class ReadGDELT {
                                         attr[26].equals(	"2042"	)))
                                     {
                                         try{
-                                            out.write(sCurrentLine + "\n");
+//                                            out.write(sCurrentLine + "\n");
                                             out.write(attr[0]  + "\t" + attr[1].substring(6, 8)  + "\t" + attr[1].substring(4, 6)  + "\t" + attr[3]  + "\t"+attr[26]  + "\t"+attr[34]  + "\t"+ attr[51]  + "\t"+ attr[49]  +"\t"+ attr[50]  +"\t" +attr[53] + "\t" + attr[54] + "\t"+ attr[57]  +"\n");
                                         } catch(StringIndexOutOfBoundsException outofbound) {
                                             System.out.println(sCurrentLine + "\n");
